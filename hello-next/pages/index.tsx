@@ -9,6 +9,9 @@ import { Character, GetCharacterResults } from "../types";
 const Home: NextPage<{ characters: Character[] }> = ({ characters }) => {
   return (
     <>
+      <div>
+        <h1 className="heading">RICK AND MORTY</h1>
+      </div>
       <div className={styles.container}>
         <Head>
           <title>Create Next App</title>
@@ -19,11 +22,6 @@ const Home: NextPage<{ characters: Character[] }> = ({ characters }) => {
         {characters.map((character) => {
           return (
             <div key={character.id}>
-              <Link legacyBehavior href={`/${character.id}`}>
-                <a>
-                  <h3>{character.name}</h3>
-                </a>
-              </Link>
               <Image
                 loader={imageLoader}
                 unoptimized
@@ -32,6 +30,11 @@ const Home: NextPage<{ characters: Character[] }> = ({ characters }) => {
                 width="200"
                 height="200"
               />
+              <Link legacyBehavior href={`/${character.id}`}>
+                <a>
+                  <h3>{character.name}</h3>
+                </a>
+              </Link>
             </div>
           );
         })}
