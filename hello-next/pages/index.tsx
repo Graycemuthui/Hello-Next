@@ -19,7 +19,7 @@ const Home: NextPage<{ characters: Character[] }> = ({ characters }) => {
         {characters.map((character) => {
           return (
             <div key={character.id}>
-              <Link href={`/characters/${character.id}`}>
+              <Link legacyBehavior href={`/${character.id}`}>
                 <a>
                   <h3>{character.name}</h3>
                 </a>

@@ -18,6 +18,8 @@ function CharacterPage({ character }: { character: Character }) {
   );
 }
 
+// Using static generation: Client-side data fetching which means that some parts of the page can be rendered entirely by client side JS
+// both getStaticProps and getStaticPaths are used together
 export async function getStaticPaths() {
   const res = await fetch("http://rickandmortyapi.com/api/character");
   const { results }: GetCharacterResults = await res.json();
@@ -34,11 +36,14 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   const res = await fetch(
     `http://rickandmortyapi.com/api/character/${params.id}`
   );
+
   const character = await res.json();
+
   return {
     props: {
       character,
     },
   };
 }
+
 export default CharacterPage;
